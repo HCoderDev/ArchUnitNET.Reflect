@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
         <IsPackable>true</IsPackable>
         <RootNamespace>ArchUnitNET</RootNamespace>
         <PackageId>TngTech.ArchUnitNET</PackageId>
@@ -18,18 +18,25 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+      <Optimize>False</Optimize>
+    </PropertyGroup>
+
     <ItemGroup>
-        <PackageReference Include="CycleDetection" Version="2.0.0"/>
-        <PackageReference Include="JetBrains.Annotations" Version="2020.3.0"/>
-        <PackageReference Include="Mono.Cecil" Version="0.11.4"/>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.2"/>
-        <PackageReference Include="System.ValueTuple" Version="4.5.0"/>
+        <PackageReference Include="CycleDetection" Version="2.0.0" />
+        <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="../README.md" Pack="true" PackagePath=""/>
-        <None Include="../Logo/ArchUnitNET-Logo.png" Pack="true" PackagePath="/Logo/"/>
-        <None Remove="License.md"/>
+        <None Include="../README.md" Pack="true" PackagePath="" />
+        <None Include="../Logo/ArchUnitNET-Logo.png" Pack="true" PackagePath="/Logo/" />
+        <None Remove="License.md" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\cecil-master\Mono.Cecil.csproj" />
     </ItemGroup>
 
 </Project>
